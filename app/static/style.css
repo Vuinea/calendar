@@ -89,15 +89,12 @@ a:hover {
   display: flex;
   flex-direction: column;
   width: 40%;
+  margin-top: 10px;
 }
 
-.form-group {
-  margin-top: 15px;
-}
-
-.auth-form > button {
-  margin-top: 15px;
-  margin-bottom: 10px;
+.auth-form > label {
+  text-align: center;
+  font-size: 1.2rem;
 }
 
 .auth-input {
@@ -108,10 +105,16 @@ a:hover {
   transition-property: all;
   transition-duration: 150ms;
   transition-timing-function: ease-in-out;
+  margin-bottom: 10px;
 }
 
 .auth-input:focus {
   border: 3px solid var(--primary-200);
+}
+
+.auth-form > button {
+  margin-top: 15px;
+  margin-bottom: 10px;
 }
 
 .main-btn {
@@ -125,5 +128,5 @@ a:hover {
 }
 
 .main-btn:focus {
-  border: 2px solid var(--primary-600);
+  border: 2px solid var(--secondary-600);
 }
