@@ -1,0 +1,114 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&family=Roboto&display=swap');
+:root {
+  --primary-50:  #FCE4EC;
+  --primary-100:  #F8BBD0;
+  --primary-200:  #F48FB1;
+  --primary-300:  #F06292;
+  --primary-400:  #EC407A;
+  --primary-500:  #E91E63;
+  --primary-600:  #D81B60;
+  --primary-700:  #C2185B;
+  --primary-800:  #AD1457;
+  --primary-900:  #880E4F;
+  --primary-A100: #FF80AB;
+  --primary-A200: #FF4081;
+  --primary-A400: #F50057;
+  --primary-A700: #C51162;
+
+  --link-normal: #0277BD;
+  --link-hover: #00B0FF;
+
+  --error: #B00020;
+}
+
+
+body {
+  font-family: "Poppins", "Roboto", sans-serif;
+  background: #EEEEEE;
+}
+
+h1, h2, h3, h4 {
+  font-family: "Roboto", "Poppins", sans-serif;
+}
+
+.error {
+  color: var(--error);
+}
+
+a {
+  color: var(--link-normal);
+  text-decoration: none;
+  transition-property: color;
+  transition-duration: 150ms;
+}
+
+a:hover {
+  color: var(--link-hover);
+}
+
+.auth-main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.auth-nav {
+  background: var(--primary-300);
+  height: 3rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.auth-nav > a {
+  color: white;
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+}
+
+.form-group {
+  margin-top: 15px;
+}
+
+.auth-form > button {
+  margin-top: 15px;
+  margin-bottom: 10px;
+}
+
+.auth-input {
+  height: 2.3rem;
+  border: 1px solid lightgray;
+  outline: none;
+  border-radius: 0.2rem;
+  transition-property: all;
+  transition-duration: 150ms;
+  transition-timing-function: ease-in-out;
+}
+
+.auth-input:focus {
+  border: 3px solid var(--primary-200);
+}
+
+.my-btn {
+  height: 2.5em;
+  transition-property: all;
+  /* background: var(--primary-500); */
+  background: var(--primary-300);
+  color: white;
+}
+
+.my-btn:hover {
+  background: var(--primary-A400);
+  color: white;
+}
+
+.my-btn:focus {
+  border: 2px solid var(--primary-600);
+}
