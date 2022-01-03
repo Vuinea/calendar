@@ -24,7 +24,7 @@ def register():
             session.clear()
         logout()
     if request.method == "POST":
-        username = request.form["username"]
+        username = request.form["username"].capitalize()
         password = request.form["password"]
         security_question = request.form["security-question"]
         db = get_db()
@@ -61,7 +61,7 @@ def login():
             return redirect(url_for('auth.login'))
         logout()
     if request.method == 'POST':
-        username = request.form['username']
+        username = request.form['username'].capitalize()
         password = request.form['password']
         db = get_db()
         error = None

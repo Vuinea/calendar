@@ -96,19 +96,18 @@ a:hover {
   border: 3px solid var(--primary-200);
 }
 
-.my-btn {
+.main-btn {
   height: 2.5em;
   transition-property: all;
-  /* background: var(--primary-500); */
   background: var(--primary-300);
   color: white;
 }
 
-.my-btn:hover {
+.main-btn:hover {
   background: var(--primary-A400);
   color: white;
 }
 
-.my-btn:focus {
+.main-btn:focus {
   border: 2px solid var(--primary-600);
 }
