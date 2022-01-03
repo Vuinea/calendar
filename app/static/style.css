@@ -15,6 +15,23 @@
   --primary-A400: #F50057;
   --primary-A700: #C51162;
 
+
+  
+  --secondary-50: #FFFDE7;
+  --secondary-100: #FFF9C4;
+  --secondary-200: #FFF59D;
+  --secondary-300: #FFF176;
+  --secondary-400: #FFEE58;
+  --secondary-500: #FFEB3B;
+  --secondary-600: #FDD835;
+  --secondary-700: #FBC02D;
+  --secondary-800: #F9A825;
+  --secondary-900: #F57F17;
+  --secondary-A100: #FFFF8D;
+  --secondary-A200: #FFFF00;
+  --secondary-A400: #FFEA00;
+  --secondary-A700: #FFD600;
+
   --link-normal: #0277BD;
   --link-hover: #00B0FF;
 
@@ -55,12 +72,13 @@ a:hover {
 
 .auth-nav {
   background: var(--primary-300);
-  height: 3rem;
+  height: 5rem;
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
   align-items: center;
   margin-bottom: 10px;
+  font-size: 1.3rem;
 }
 
 .auth-nav > a {
@@ -99,13 +117,11 @@ a:hover {
 .main-btn {
   height: 2.5em;
   transition-property: all;
-  background: var(--primary-300);
-  color: white;
+  background: var(--secondary-700);
 }
 
 .main-btn:hover {
-  background: var(--primary-A400);
-  color: white;
+  background: var(--secondary-A700);
 }
 
 .main-btn:focus {
