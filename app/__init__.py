@@ -1,6 +1,6 @@
 import os
 
-from flask import Flask
+from flask import Flask, redirect, url_for, g
 from . import db, auth, calendar
 
 
@@ -30,6 +30,13 @@ def create_app(test_config=None):
 
     app.register_blueprint(auth.bp)
     app.register_blueprint(calendar.bp)
+
+    @app.errorhandler(404)
+    def page_not_found(e):
+        if g.user:
+            return redirect(url_for("calendar.redirect_day_view"))
+        else:
+            return redirect(url_for("auth.login"))
 
     return app
 

@@ -12,9 +12,17 @@
 /* rest of the styling is in the style.css file with the auth-nav  */
 .main-top-nav {
   justify-content: space-between !important;
-  color: white;
+  color: white !important;
   margin-left: 10px;
   margin-right: 10px;
+}
+
+.main-top-nav > a {
+  color: white !important;
+}
+
+.main-top-nav > a:hover {
+  color: #E0E0E0 !important;
 }
 
 .logout {

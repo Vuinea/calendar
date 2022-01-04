@@ -16,6 +16,8 @@
   <div class='main-top-nav-holder'>
     <div class="main-top-nav">
       <h1>Welcome {{ g.user['username'] }}</h1>
+      <a href="{{ url_for('calendar.redirect_day_view') }}">Day View</a>
+      <a href="{{ url_for('calendar.redirect_month_view') }}">Month View</a>
       <a class="logout" href="{{ url_for('auth.logout') }}">Logout</a>
     </div>
   </div>
