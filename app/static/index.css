@@ -75,7 +75,6 @@
 }
 
 .expand-item {
-  /* background: var(--primary-300); */
   background: var(--gray);
   color: white;
   box-shadow: var(--item-box-shadow) !important;
@@ -116,6 +115,10 @@
 
 .add-input {
   width: 13em;
+}
+
+textarea.add-input {
+  height: 10rem;
 }
 
 /* starting the month view */
