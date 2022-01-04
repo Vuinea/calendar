@@ -19,10 +19,7 @@ def logout():
 @bp.route('/register', methods=('GET', 'POST'))
 def register():
     if session != {}:
-        @bp.route('/logout')
-        def logout():
-            session.clear()
-        logout()
+        return redirect("auth.logout")
     if request.method == "POST":
         username = request.form["username"].capitalize()
         password = request.form["password"]
@@ -55,11 +52,7 @@ def register():
 @bp.route('/login', methods=('GET', 'POST'))
 def login():
     if session != {}:
-        @bp.route('/logout')
-        def logout():
-            session.clear()
-            return redirect(url_for('auth.login'))
-        logout()
+        return redirect("auth.logout")
     if request.method == 'POST':
         username = request.form['username'].capitalize()
         password = request.form['password']
@@ -75,7 +68,7 @@ def login():
         if error is None:
             session.clear()
             session['user_id'] = user['id']
-            return redirect(url_for('calendar.day_view'))
+            return redirect(url_for('calendar.redirect_day_view'))
 
         flash(error)
 

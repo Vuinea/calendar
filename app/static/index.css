@@ -1,0 +1,45 @@
+
+.main-top-nav-holder {
+  background: var(--primary-300);
+}
+
+
+/* rest of the styling is in the style.css file with the auth-nav  */
+.main-top-nav {
+  justify-content: space-between !important;
+  color: white;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.logout {
+  color: white;
+  font-size: 1rem;
+}
+
+.logout:hover {
+  color: white;
+}
+
+.month-nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.arrow-btn {
+  background: var(--secondary-700);
+  box-shadow: var(--box-shadow-1) !important;
+}
+
+.arrow-btn:hover {
+  box-shadow: var(--box-shadow-2) !important;
+}
+
+.centered-div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
