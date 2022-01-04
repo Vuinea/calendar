@@ -40,7 +40,12 @@
             <p class="day-num today-date">{{ date.day }}</p>
           {% else %}
             <p class="day-num">{{ date.day }}</p>
-          {% endif %}  
+          {% endif %}
+
+          {% for item in items_in_month[date] %}
+            <p class="item">{{ item.title }}</p>
+          {% endfor %}
+
         </div>
       {% endfor %}
 

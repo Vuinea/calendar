@@ -132,9 +132,12 @@ def month_view(month, year):
 
   # getting the dates for the calendar and then getting the list for each day
   dates_in_month = cal.itermonthdates(year, month)
-  # for date in dates_in_month:
-  #   print(date)
 
+  items_in_month = {}
+
+  for date in dates_in_month:
+    date_items = db.execute('SELECT * FROM item WHERE author_id = ? AND due = ?', (g.user['id'], date)).fetchall()
+    items_in_month[date] = date_items
 
   # getting the current day (Sunday, Monday, etc.)
   today = datetime.date.today()
@@ -155,7 +158,8 @@ def month_view(month, year):
     cal_year=year,
     prev_month_url=prev_month_url,
     next_month_url=next_month_url,
-    dates_in_month=dates_in_month,
+    dates_in_month=cal.itermonthdates(year, month),
+    items_in_month=items_in_month,
   )
 
 
