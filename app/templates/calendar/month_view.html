@@ -4,7 +4,7 @@
 
 
 {% block content %}
-      <div class="month-nav">
+    <div class="month-nav">
       <a href="{{ prev_month_url }}">
         <button class="btn arrow-btn shadow-none">
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
@@ -24,5 +24,25 @@
           </svg>
         </button>
       </a>    
+    </div>
+    <div id="month-view-main">
+      {% for day in days_of_week %}
+        {% if day == weekday_str %}
+          <h2 class="day-of-week today">{{ day }}</h2>
+        {% else %}
+          <h2 class="day-of-week">{{ day }}</h2>
+        {% endif %}
+      {% endfor %}
+
+      {% for date in dates_in_month %}
+        <div class="cal-day rounded">
+          {% if date == today %}
+            <p class="day-num today-date">{{ date.day }}</p>
+          {% else %}
+            <p class="day-num">{{ date.day }}</p>
+          {% endif %}  
+        </div>
+      {% endfor %}
+
     </div>
 {% endblock %}

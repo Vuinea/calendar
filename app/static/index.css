@@ -1,4 +1,3 @@
-
 :root {
   --item-box-shadow: var(--box-shadow-2);
   --item-box-shadow-hover: var(--box-shadow-3);
@@ -9,7 +8,7 @@
 }
 
 
-/* rest of the styling is in the style.css file with the auth-nav  */
+/* rest of the styling for this div is in the style.css file with the auth-nav  */
 .main-top-nav {
   justify-content: space-between !important;
   color: white !important;
@@ -56,6 +55,8 @@
   justify-content: center;
   align-items: center;
 }
+
+/* starting the day view */
 
 #today-items-holder {
   margin: 30px 30px;
@@ -118,3 +119,35 @@
   width: 13em;
 }
 
+/* starting the month view */
+
+#month-view-main {
+  margin-top: 30px;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 1rem;
+  text-align: center;
+  font-family: "Roboto", "Poppins", sans-serif;
+}
+
+.day-of-week {
+  font-family: "Poppins", "Roboto", sans-serif;
+}
+
+.today {
+  color: var(--primary-300);
+  font-family: "Poppins", "Roboto", sans-serif;
+}
+
+.cal-day {
+  min-height: 10rem;
+  max-height: 14rem;
+  text-align: center;
+  background: var(--secondary-700);
+  color: white;
+  box-shadow: none;
+}
+
+.today-date {
+  color: var(--primary-500);
+}

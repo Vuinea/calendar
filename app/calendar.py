@@ -128,6 +128,14 @@ def month_view(month, year):
   next_month_url = url_for("calendar.month_view", month=next_month.month, year=next_month.year)
   prev_month_url = url_for("calendar.month_view", month=prev_month.month, year=prev_month.year)
 
+  str_month = months[month]
+
+  # getting the dates for the calendar and then getting the list for each day
+  dates_in_month = cal.itermonthdates(year, month)
+  # for date in dates_in_month:
+  #   print(date)
+
+
   # getting the current day (Sunday, Monday, etc.)
   today = datetime.date.today()
   weekday_int = today.weekday()
@@ -137,9 +145,9 @@ def month_view(month, year):
     weekday_int = 0
   weekday_str = days_of_week[weekday_int]
 
-  str_month = months[month]
 
   return render_template("calendar/month_view.html", 
+    today=today,
     days_of_week=days_of_week, 
     weekday_str=weekday_str,
     str_month=str_month,
@@ -147,6 +155,7 @@ def month_view(month, year):
     cal_year=year,
     prev_month_url=prev_month_url,
     next_month_url=next_month_url,
+    dates_in_month=dates_in_month,
   )
 
 
