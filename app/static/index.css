@@ -76,7 +76,7 @@
 
 .expand-item {
   /* background: var(--primary-300); */
-  background: #90A4AE;
+  background: var(--gray);
   color: white;
   box-shadow: var(--item-box-shadow) !important;
 }
@@ -142,7 +142,7 @@
   min-height: 10rem;
   max-height: 14rem;
   text-align: center;
-  background: #90A4AE;
+  background: var(--gray);
   color: white;
   box-shadow: none;
 }
