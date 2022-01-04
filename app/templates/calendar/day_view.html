@@ -11,7 +11,12 @@
         </svg>
       </button>
 
-      <h2>{{ str_month }} {{ cal_day.day }}, {{ cal_day.year }}</h2>
+      <h2>
+        {{ str_month }} {{ cal_day.day }}, {{ cal_day.year }}
+        {% if cal_day == today %}
+          (today)
+        {% endif %}
+      </h2>
       
       <button class="btn arrow-btn shadow-none">
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
@@ -26,11 +31,18 @@
       {% endfor %}
 
       <div id="today-items-holder">
-        <h3>Things To Do Today</h3> 
         <ul id="today-items-list">
+
           {% for item in today_items %}
             <li class="today-item">
-              {{ item.title }}
+
+              <button id="expand-item-{{ loop.index }}" class="btn shadow-none expand-item" onclick="displayExtraInfo(this)">
+                {{ item.title }}
+                <div id="extra-info-{{ loop.index }}" class="extra-info" style="display: none;">
+                  {{ item.body }}
+                </div>
+              </button>
+              
               <a href="{{ url_for('calendar.delete_item', id=item.id) }}">
                 <button class="btn shadow-none remove-btn">X</button>
               </a>

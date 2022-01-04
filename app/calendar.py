@@ -39,6 +39,7 @@ def day_view(month, day, year):
     "December",
   ]
 
+  today = datetime.date.today()
   cal_day = datetime.date(year=year, month=month, day=day)
   
   db = get_db()
@@ -57,7 +58,7 @@ def day_view(month, day, year):
 
     flash(f"Item {title} Added!")
     return redirect(url_for("calendar.day_view", day=cal_day.day, month=cal_day.month, year=cal_day.year))
-  return render_template("calendar/day_view.html", cal_day=cal_day, str_month=str_month, today_items=today_items)
+  return render_template("calendar/day_view.html", cal_day=cal_day, str_month=str_month, today=today, today_items=today_items)
 
 @bp.route("/<int:id>/delete", methods=["GET", "POST"])
 @login_required

@@ -1,4 +1,9 @@
 
+:root {
+  --item-box-shadow: var(--box-shadow-2);
+  --item-box-shadow-hover: var(--box-shadow-3);
+}
+
 .main-top-nav-holder {
   background: var(--primary-300);
 }
@@ -57,15 +62,33 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  gap: 1em;
+}
+
+.expand-item {
+  background: var(--primary-300);
+  color: white;
+  box-shadow: var(--item-box-shadow) !important;
+}
+
+.expand-item:hover {
+  color: white;
+  box-shadow: var(--item-box-shadow-hover) !important;
+}
+
+.extra-info {
+  color: var(--secondary-300);
 }
 
 .remove-btn {
   background: var(--error);
   color: white;
+  box-shadow: var(--item-box-shadow) !important;
 }
 
 .remove-btn:hover {
   color: white;
+  box-shadow: var(--item-box-shadow-hover) !important;
 }
 
 #add-form {
