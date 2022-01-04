@@ -104,7 +104,7 @@ a:hover {
   font-size: 1.2rem;
 }
 
-.auth-input {
+.form-input {
   height: 2.3rem;
   border: 1px solid lightgray;
   outline: none;
@@ -115,7 +115,7 @@ a:hover {
   margin-bottom: 10px;
 }
 
-.auth-input:focus {
+.form-input:focus {
   border: 3px solid var(--primary-200);
 }
 

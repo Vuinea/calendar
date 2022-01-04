@@ -19,7 +19,7 @@ def logout():
 @bp.route('/register', methods=('GET', 'POST'))
 def register():
     if session != {}:
-        return redirect("auth.logout")
+        return redirect(url_for("auth.logout"))
     if request.method == "POST":
         username = request.form["username"].capitalize()
         password = request.form["password"]
@@ -52,7 +52,7 @@ def register():
 @bp.route('/login', methods=('GET', 'POST'))
 def login():
     if session != {}:
-        return redirect("auth.logout")
+        return redirect(url_for("auth.logout"))
     if request.method == 'POST':
         username = request.form['username'].capitalize()
         password = request.form['password']
