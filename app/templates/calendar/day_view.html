@@ -4,12 +4,15 @@
 
 {% block content %}
   <div id="day-view-main">
+
     <div class="month-nav">
-      <button class="btn arrow-btn shadow-none">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
-          <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
-        </svg>
-      </button>
+      <a href="{{ yesterday_url }}">
+        <button class="btn arrow-btn shadow-none">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
+          </svg>
+        </button>
+      </a>
 
       <h2>
         {{ str_month }} {{ cal_day.day }}, {{ cal_day.year }}
@@ -17,12 +20,14 @@
           (today)
         {% endif %}
       </h2>
-      
-      <button class="btn arrow-btn shadow-none">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
-          <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
-        </svg>
-      </button>    
+
+      <a href="{{ tommorow_url }}">
+        <button class="btn arrow-btn shadow-none">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
+          </svg>
+        </button>
+      </a>    
     </div>
 
     <div class="centered-div">
@@ -54,7 +59,7 @@
       <form method="post" id="add-form">
         <div>
           <label for="add-title">Title:</label>
-          <input class="add-input form-input" type="text" name="add-title" id="add-title">
+          <input class="add-input form-input" type="text" name="add-title" id="add-title" autocomplete="off">
         </div>
 
         <div>

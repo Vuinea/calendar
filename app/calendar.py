@@ -7,7 +7,7 @@ from .auth import login, login_required
 from .db import get_db
 
 import datetime
-
+from dateutil.relativedelta import relativedelta
 
 bp = Blueprint("calendar", __name__)
 
@@ -40,8 +40,16 @@ def day_view(month, day, year):
   ]
 
   today = datetime.date.today()
+  
+
   cal_day = datetime.date(year=year, month=month, day=day)
   
+  cal_tommorow = cal_day + relativedelta(days=1)
+  cal_yesterday = cal_day - relativedelta(days=1)
+
+  tommorow_url = url_for("calendar.day_view", month=cal_tommorow.month, day=cal_tommorow.day, year=cal_tommorow.year)
+  yesterday_url = url_for("calendar.day_view", month=cal_yesterday.month, day=cal_yesterday.day, year=cal_yesterday.year)
+
   db = get_db()
 
   today_items = db.execute('SELECT * FROM item WHERE due = ? AND author_id = ?', (cal_day, g.user['id'])).fetchall()
@@ -55,10 +63,22 @@ def day_view(month, day, year):
 
     db.execute("INSERT INTO item (title, body, due, author_id) VALUES (?, ?, ?, ?)", (title, body, due, g.user['id']))
     db.commit()
-
     flash(f"Item {title} Added!")
     return redirect(url_for("calendar.day_view", day=cal_day.day, month=cal_day.month, year=cal_day.year))
-  return render_template("calendar/day_view.html", cal_day=cal_day, str_month=str_month, today=today, today_items=today_items)
+  
+  
+  return render_template(
+    "calendar/day_view.html", 
+    cal_day=cal_day, 
+    str_month=str_month, 
+    today=today,
+    tommorow_url=tommorow_url,
+    yesterday_url=yesterday_url,
+    today_items=today_items,
+
+  )
+
+
 
 @bp.route("/<int:id>/delete", methods=["GET", "POST"])
 @login_required
