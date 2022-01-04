@@ -2,7 +2,7 @@ from flask import Blueprint, render_template, session, request, g, flash
 from flask.helpers import url_for
 from werkzeug.utils import redirect
 
-from .auth import login_required
+from .auth import login, login_required
 
 from .db import get_db
 
@@ -16,10 +16,12 @@ today = datetime.date.today()
 month, day, year = today.month, today.day, today.year
 
 @bp.route("/day-view")
+@login_required
 def redirect_day_view():
   return redirect(url_for("calendar.day_view", month=today.month, day=today.day, year=today.year))
 
 @bp.route("/day-view/<int:month>/<int:day>/<int:year>", methods=['GET', 'POST'])
+@login_required
 def day_view(month, day, year):
 
   months = [
@@ -57,5 +59,17 @@ def day_view(month, day, year):
     return redirect(url_for("calendar.day_view", day=cal_day.day, month=cal_day.month, year=cal_day.year))
   return render_template("calendar/day_view.html", cal_day=cal_day, str_month=str_month, today_items=today_items)
 
+@bp.route("/<int:id>/delete", methods=["GET", "POST"])
+@login_required
+def delete_item(id):
+  db = get_db()
+  item = db.execute("SELECT * FROM item WHERE id = ?", (id,)).fetchone()
+  if item['author_id'] == g.user['id']:
+    db.execute('DELETE FROM item WHERE id = ?', (id,))
+    db.commit()
+    flash(f"item {item['title']} was deleted successfully!")
+  else:
+    flash("You cannot remove this item")
+  return redirect(url_for("calendar.redirect_day_view"))
 
 

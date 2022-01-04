@@ -25,11 +25,16 @@
           <p class="success">{{ message }}</p>
       {% endfor %}
 
-      <div id="today-items">
+      <div id="today-items-holder">
         <h3>Things To Do Today</h3> 
-        <ul>
+        <ul id="today-items-list">
           {% for item in today_items %}
-            <li>{{ item.title }}</li>
+            <li class="today-item">
+              {{ item.title }}
+              <a href="{{ url_for('calendar.delete_item', id=item.id) }}">
+                <button class="btn shadow-none remove-btn">X</button>
+              </a>
+            </li>
           {% endfor %}
         </ul>
       </div>

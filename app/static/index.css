@@ -44,8 +44,28 @@
   align-items: center;
 }
 
-#today-items {
+#today-items-holder {
   margin: 30px 30px;
+}
+
+#today-items-list {
+  padding-top: 10px;
+}
+
+.today-item {
+  margin: 10px 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.remove-btn {
+  background: var(--error);
+  color: white;
+}
+
+.remove-btn:hover {
+  color: white;
 }
 
 #add-form {
@@ -67,8 +87,3 @@
   width: 13em;
 }
 
-.form-textarea {
-  width: 13em !important;
-  border-color: red !important;
-  transition-property: border !important;
-}
