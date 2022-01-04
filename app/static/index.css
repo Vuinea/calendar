@@ -75,7 +75,8 @@
 }
 
 .expand-item {
-  background: var(--primary-300);
+  /* background: var(--primary-300); */
+  background: #90A4AE;
   color: white;
   box-shadow: var(--item-box-shadow) !important;
 }
@@ -86,18 +87,16 @@
 }
 
 .extra-info {
-  color: var(--secondary-300);
+  color: var(--secondary-600);
 }
 
 .remove-btn {
   background: var(--error);
   color: white;
-  box-shadow: var(--item-box-shadow) !important;
 }
 
 .remove-btn:hover {
   color: white;
-  box-shadow: var(--item-box-shadow-hover) !important;
 }
 
 #add-form {
