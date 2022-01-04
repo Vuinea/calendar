@@ -22,15 +22,18 @@ def register():
         return redirect(url_for("auth.logout"))
     if request.method == "POST":
         username = request.form["username"].capitalize()
-        password = request.form["password"]
+        password1 = request.form["password1"]
+        password2 = request.form["password2"]
         security_question = request.form["security-question"]
         db = get_db()
         error = None
 
         if not username:
             error = "Username is required"
-        elif not password:
+        elif not password1:
             error = "Password is required"
+        elif password1 != password2:
+            error = "The two passwords don't match"
         elif not security_question:
             error = "Please answer the security question"
 
@@ -39,7 +42,7 @@ def register():
 
         if error is None:
             db.execute('INSERT INTO user (username, password, security_question) VALUES (?, ?, ?)',
-                       (username, generate_password_hash(password), security_question))
+                       (username, generate_password_hash(password1), security_question))
             db.commit()
 
             return redirect(url_for('auth.login'))

@@ -11,7 +11,7 @@ CREATE TABLE user (
 CREATE TABLE item (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     author_id INTEGER NOT NULL,
-    due TIMESTAMP NOT NULL,
+    due DATE NOT NULL,
     title CHAR(100),
     body TEXT NOT NULL,
     FOREIGN KEY (author_id) REFERENCES user (id)

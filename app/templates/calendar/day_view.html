@@ -21,24 +21,33 @@
     </div>
 
     <div class="centered-div">
-      <ul>
+      {% for message in get_flashed_messages() %}
+          <p class="success">{{ message }}</p>
+      {% endfor %}
 
-      </ul>
+      <div id="today-items">
+        <h3>Things To Do Today</h3> 
+        <ul>
+          {% for item in today_items %}
+            <li>{{ item.title }}</li>
+          {% endfor %}
+        </ul>
+      </div>
 
       <form method="post" id="add-form">
         <div>
           <label for="add-title">Title:</label>
-          <input class="add-input form-input" type="text" name="title" id="add-title">
+          <input class="add-input form-input" type="text" name="add-title" id="add-title">
         </div>
 
         <div>
           <label for="add-body">Description:</label>
-          <input class="large-input form-input" type="text" name='body' id="add-body">
+          <textarea class="form-input add-input" type="text" name='add-body' id="add-body"></textarea>
         </div>
 
         <div>
           <label for="add-date">Date:</label>
-          <input class="add-input form-input" value="{{ cal_day }}" type="date" name="due" id="add-due">
+          <input class="add-input form-input" value="{{ cal_day }}" type="date" name="add-due" id="add-due">
         </div>
         <button class="btn main-btn shadow-none">Add Item</button>
       </form>

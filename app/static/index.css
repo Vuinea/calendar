@@ -44,6 +44,10 @@
   align-items: center;
 }
 
+#today-items {
+  margin: 30px 30px;
+}
+
 #add-form {
   margin-top: 10px;
   display: flex;
@@ -63,6 +67,8 @@
   width: 13em;
 }
 
-.large-input {
-  height: 5rem !important;
+.form-textarea {
+  width: 13em !important;
+  border-color: red !important;
+  transition-property: border !important;
 }

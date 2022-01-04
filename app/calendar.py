@@ -1,6 +1,8 @@
-from flask import Blueprint, render_template, session, request, g
+from flask import Blueprint, render_template, session, request, g, flash
 from flask.helpers import url_for
 from werkzeug.utils import redirect
+
+from .auth import login_required
 
 from .db import get_db
 
@@ -17,7 +19,7 @@ month, day, year = today.month, today.day, today.year
 def redirect_day_view():
   return redirect(url_for("calendar.day_view", month=today.month, day=today.day, year=today.year))
 
-@bp.route("/day-view/<int:month>/<int:day>/<int:year>")
+@bp.route("/day-view/<int:month>/<int:day>/<int:year>", methods=['GET', 'POST'])
 def day_view(month, day, year):
 
   months = [
@@ -40,8 +42,20 @@ def day_view(month, day, year):
   db = get_db()
 
   today_items = db.execute('SELECT * FROM item WHERE due = ? AND author_id = ?', (cal_day, g.user['id'])).fetchall()
-  
+
   str_month = months[cal_day.month-1]
 
-  return render_template("calendar/day_view.html", cal_day=cal_day, str_month=str_month)
+  if request.method == 'POST':
+    title = request.form.get('add-title')
+    body = request.form.get("add-body")
+    due = request.form.get("add-due")
+
+    db.execute("INSERT INTO item (title, body, due, author_id) VALUES (?, ?, ?, ?)", (title, body, due, g.user['id']))
+    db.commit()
+
+    flash(f"Item {title} Added!")
+    return redirect(url_for("calendar.day_view", day=cal_day.day, month=cal_day.month, year=cal_day.year))
+  return render_template("calendar/day_view.html", cal_day=cal_day, str_month=str_month, today_items=today_items)
+
+
 

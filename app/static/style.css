@@ -36,6 +36,7 @@
   --link-hover: #00B0FF;
 
   --error: #B00020;
+  --success: var(--bs-success);
 
   --box-shadow-1: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
   --box-shadow-2: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
@@ -51,12 +52,16 @@ body {
   background: #EEEEEE;
 }
 
-h1, h2, h3, h4 {
+h1, h2 {
   font-family: "Roboto", "Poppins", sans-serif;
 }
 
 .error {
   color: var(--error);
+}
+
+.success {
+  color: var(--success);
 }
 
 a {
@@ -109,7 +114,7 @@ a:hover {
   border: 1px solid lightgray;
   outline: none;
   border-radius: 0.2rem;
-  transition-property: all;
+  transition-property: border;
   transition-duration: 150ms;
   transition-timing-function: ease-in-out;
   margin-bottom: 10px;
