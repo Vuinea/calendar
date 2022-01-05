@@ -67,15 +67,11 @@ h1, h2 {
 }
 
 a {
-  color: var(--link-normal);
   text-decoration: none;
   transition-property: color;
   transition-duration: 150ms;
 }
 
-a:hover {
-  color: var(--link-hover);
-}
 
 .auth-main {
   display: flex;
@@ -145,4 +141,11 @@ a:hover {
   border: 2px solid var(--secondary-600);
 }
 
+.forgot-password {
+  color: var(--link-normal);
+}
+
+.forgot-password:hover {
+  color: var(--link-hover);
+}
 

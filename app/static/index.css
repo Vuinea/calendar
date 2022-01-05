@@ -168,19 +168,20 @@ textarea.add-input {
   color: #757575;
 }
 
+.day-num-link {
+  color: inherit;
+}
+
+.day-num-link:hover {
+  color: var(--primary-900);
+}
+
 .today-date {
-  color: var(--today-color);
+  color: var(--today-color) !important;
 }
 
 .different-date {
   color: #BDBDBD;
-}
-
-.day-view-btn {
-  width: fit-content;
-  background: var(--primary-200);
-  box-shadow: var(--box-shadow-2) !important;
-
 }
 
 /* modal */

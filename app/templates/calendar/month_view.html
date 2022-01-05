@@ -44,20 +44,20 @@
 
       {% for date in dates_in_month %}
         <div class="cal-day rounded" id="{{ date.year }}-{{ date.month }}-{{ date.day }}" onclick="changeValue(this.id)">
-          {% if date == today %}
-            <h4 class="day-num today-date">{{ date.day }}</h4>
-          {% else %}
-            {# if it is a different month #}
-            {% if date.month != cal_month or date.year != cal_year %}
-              <h4 class="day-num different-date">{{ date.day }}</h4>
+          
+          <a class="day-num-link" href="{{ url_for('calendar.day_view', day=date.day, month=date.month, year=date.year) }}">
+            {% if date == today %}
+              <h4 class="day-num today-date">{{ date.day }}</h4>
             {% else %}
-              <h4 class="day-num">{{ date.day }}</h4>
+              {# if it is a different month #}
+              {% if date.month != cal_month or date.year != cal_year %}
+                <h4 class="day-num different-date">{{ date.day }}</h4>
+              {% else %}
+                <h4 class="day-num">{{ date.day }}</h4>
+              {% endif %}
             {% endif %}
-
-          {% endif %}
-          <a href="{{ url_for('calendar.day_view', day=date.day, month=date.month, year=date.year) }}">
-            <button class="btn day-view-btn shadow-none">Day View</button>
           </a>
+
           {% for item in items_in_month[date] %}
             <p class="item">{{ item.title }}</p>
           {% endfor %}
