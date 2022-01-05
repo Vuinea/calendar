@@ -1,6 +1,7 @@
 :root {
   --item-box-shadow: var(--box-shadow-2);
   --item-box-shadow-hover: var(--box-shadow-3);
+  --today-color: var(--primary-300);
 }
 
 .main-top-nav-holder {
@@ -129,7 +130,6 @@ textarea.add-input {
   margin-top: 30px;
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  gap: 1rem;
   text-align: center;
   font-family: "Roboto", "Poppins", sans-serif;
 }
@@ -139,7 +139,7 @@ textarea.add-input {
 }
 
 .today {
-  color: var(--primary-300);
+  color: var(--today-color);
   font-family: "Poppins", "Roboto", sans-serif;
 }
 
@@ -147,17 +147,16 @@ textarea.add-input {
   min-height: 10rem;
   max-height: 14rem;
   text-align: center;
-  background: var(--gray);
-  color: white;
   overflow-y: hidden;
+  border: 1px solid lightgray;
 }
 
 .today-date {
-  color: var(--secondary-600);
+  color: var(--today-color);
 }
 
 .different-date {
-  color: gray;
+  color: #BDBDBD;
 }
 
 /* modal */
