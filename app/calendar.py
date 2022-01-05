@@ -1,16 +1,15 @@
-import re
-from flask import Blueprint, render_template, session, request, g, flash
+from flask import Blueprint, render_template, request, g, flash
 from flask.helpers import url_for
 from werkzeug.utils import redirect
 
-from .auth import login, login_required
+from .auth import login_required
 
 from .db import get_db
 
 import datetime
 from dateutil.relativedelta import relativedelta
 
-from calendar import Calendar, week
+from calendar import Calendar
 
 bp = Blueprint("calendar", __name__)
 

@@ -81,6 +81,7 @@
   background: var(--gray);
   color: white;
   box-shadow: var(--item-box-shadow) !important;
+  min-width: 13rem; 
 }
 
 .expand-item:hover {
@@ -126,6 +127,21 @@ textarea.add-input {
 
 /* starting the month view */
 
+#month-nav-middle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.original-month-btn {
+  width: 3rem;
+  text-align: center;
+  border-radius: .6rem;
+  color: black !important;
+  margin-bottom: 10px;
+}
+
 #month-view-main {
   margin-top: 30px;
   display: grid;
@@ -148,7 +164,8 @@ textarea.add-input {
   max-height: 14rem;
   text-align: center;
   overflow-y: hidden;
-  border: 1px solid lightgray;
+  border: 1px solid #BDBDBD;
+  color: #757575;
 }
 
 .today-date {
@@ -157,6 +174,13 @@ textarea.add-input {
 
 .different-date {
   color: #BDBDBD;
+}
+
+.day-view-btn {
+  width: fit-content;
+  background: var(--primary-200);
+  box-shadow: var(--box-shadow-2) !important;
+
 }
 
 /* modal */
