@@ -1,3 +1,4 @@
+import re
 from flask import Blueprint, render_template, session, request, g, flash
 from flask.helpers import url_for
 from werkzeug.utils import redirect
@@ -65,7 +66,7 @@ def day_view(month, day, year):
 
     db.execute("INSERT INTO item (title, body, due, author_id) VALUES (?, ?, ?, ?)", (title, body, due, g.user['id']))
     db.commit()
-    flash(f"Item {title} Added!")
+    flash(f"Item '{title}' Added!")
     return redirect(url_for("calendar.day_view", day=cal_day.day, month=cal_day.month, year=cal_day.year))
   
   
@@ -121,6 +122,8 @@ def month_view(month, year):
 
   # just putting 1 as a placeholder for the day
   cal_day = datetime.date(year=year, month=month, day=1)
+  cal_month = month
+  cal_year = year
 
   next_month = cal_day + relativedelta(months=1)
   prev_month = cal_day - relativedelta(months=1)
@@ -147,6 +150,16 @@ def month_view(month, year):
   else:
     weekday_int = 0
   weekday_str = days_of_week[weekday_int]
+
+  if request.method == 'POST':
+    title = request.form['modal-add-title']
+    body = request.form['modal-add-body']
+    due = request.form["modal-add-due"]
+
+    db.execute("INSERT INTO item (author_id, due, title, body) VALUES (?, ?, ?, ?)", (g.user['id'], due, title, body))
+    db.commit()
+    return redirect(url_for("calendar.month_view", month=month, year=year))
+    
 
 
   return render_template("calendar/month_view.html", 

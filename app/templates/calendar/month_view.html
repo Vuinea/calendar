@@ -37,9 +37,15 @@
       {% for date in dates_in_month %}
         <div class="cal-day rounded" id="{{ date.year }}-{{ date.month }}-{{ date.day }}" onclick="changeValue(this.id)">
           {% if date == today %}
-            <p class="day-num today-date">{{ date.day }}</p>
+            <h4 class="day-num today-date">{{ date.day }}</h4>
           {% else %}
-            <p class="day-num">{{ date.day }}</p>
+            {# if it is a different month #}
+            {% if date.month != cal_month or date.year != cal_year %}
+              <h4 class="day-num different-date">{{ date.day }}</h4>
+            {% else %}
+              <h4 class="day-num">{{ date.day }}</h4>
+            {% endif %}
+
           {% endif %}
 
           {% for item in items_in_month[date] %}
@@ -57,7 +63,7 @@
         <form method="post" id="modal-add-form">
           <div>
             <label for="modal-add-title">Title:</label>
-            <input class="add-input form-input" type="text" name="modal-add-title" id="modal-add-title" autocomplete="off">
+            <input class="add-input form-input" type="text" name="modal-add-title" id="modal-add-title" autocomplete="off" required>
           </div>
 
           <div>
@@ -67,9 +73,9 @@
 
           <div>
             <label for="add-date">Date:</label>
-            <input class="add-input form-input" type="date" name="modal-add-due" id="modal-add-due">
+            <input class="add-input form-input" type="date" name="modal-add-due" id="modal-add-due" required>
           </div>
-          <button class="btn main-btn shadow-none">Add Item</button>
+          <button class="btn main-btn shadow-none">Add</button>
       </form>
 
 
